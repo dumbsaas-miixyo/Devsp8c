@@ -1,0 +1,13 @@
+# WireGuard DESKTOP client config - import into WireGuard on your desktop
+# Replace every <...> placeholder. NEVER commit real private keys to git.
+# Desktop VPN IP: 10.8.0.10, Agent: 10.8.0.10:18080 (VPN only)
+[Interface]
+PrivateKey = <DESKTOP_PRIVATE_KEY>
+Address = 10.8.0.10/24
+DNS = 10.8.0.1
+
+[Peer]
+PublicKey = <SERVER_PUBLIC_KEY>
+Endpoint = <SERVER_PUBLIC_IP_OR_HOSTNAME>:51820
+AllowedIPs = 10.8.0.0/24
+PersistentKeepalive = 25

@@ -1,0 +1,20 @@
+# WireGuard SERVER config - place on the VPN server, e.g. /etc/wireguard/wg0.conf
+# Replace every <...> placeholder. NEVER commit real private keys to git.
+# Server VPN IP: 10.8.0.1, WireGuard UDP port: 51820
+[Interface]
+PrivateKey = <SERVER_PRIVATE_KEY>
+Address = 10.8.0.1/24
+ListenPort = 51820
+# Uncomment on Linux to forward VPN traffic:
+# PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+# PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
+
+# Desktop client - Android Studio machine
+[Peer]
+PublicKey = <DESKTOP_PUBLIC_KEY>
+AllowedIPs = 10.8.0.10/32
+
+# Devsp8c IDE client
+[Peer]
+PublicKey = <DEVSP8C_PUBLIC_KEY>
+AllowedIPs = 10.8.0.20/32
